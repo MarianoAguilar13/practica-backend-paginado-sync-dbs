@@ -1,9 +1,13 @@
 import Airtable from "airtable";
 import algoliasearch from "algoliasearch";
+import "dotenv/config";
 
 export let baseAirtable = new Airtable({
-  apiKey: "keysQ8ris9t4P8Cjb",
+  apiKey: process.env.AIRTABLE_API_KEY,
 }).base("appy80saWEF0ooYoM");
 
-const client = algoliasearch("FYQGF7IE1Z", "489e3bfcbb4a03a5dd04d574c9468028");
+const client = algoliasearch(
+  process.env.ALGOLIA_API_KEY,
+  process.env.ALGOLIA_APP_ID
+);
 export const productIndex = client.initIndex("products");
